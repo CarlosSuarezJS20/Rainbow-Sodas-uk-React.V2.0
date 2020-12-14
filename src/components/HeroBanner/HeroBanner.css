@@ -1,0 +1,28 @@
+.MainBanner {
+	display: flex;
+	min-height: 85vh;
+	background: url('../../assets/USoA-Homepage-Block-3.webp') center/cover
+		no-repeat;
+	align-items: center;
+}
+
+.BannerText {
+	font-size: 4rem;
+	padding: 10px 0;
+	background-color: rgba(255, 255, 255, 0.5);
+	font-weight: 400;
+	text-transform: uppercase;
+	line-height: 0.8em;
+	margin-top: 10rem;
+}
+
+@media screen and (min-width: 768px) {
+	.BannerText {
+		font-size: 5rem;
+	}
+}
+@media screen and (min-width: 1170px) {
+	.BannerText {
+		font-size: 7rem;
+	}
+}

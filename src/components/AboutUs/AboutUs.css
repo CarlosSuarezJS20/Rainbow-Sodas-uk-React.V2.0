@@ -1,0 +1,52 @@
+.SectionCenter {
+	width: 100vw;
+	margin: 0 auto;
+}
+
+.AboutUs {
+	color: #fff;
+	background: rgb(41, 41, 41);
+	display: flex;
+	display: block;
+}
+
+.AboutUs h1 {
+	font-size: 4rem;
+	margin-left: 1rem;
+	line-height: 0.8em;
+	letter-spacing: 0.1rem;
+	font-size: 200;
+	padding: 4rem 1rem;
+}
+
+.AboutUs p {
+	font-size: 1.8rem;
+	text-transform: none;
+	text-align: left;
+	padding: 0 1rem;
+	padding-bottom: 3.5rem;
+	margin-left: 1rem;
+}
+
+@media (min-width: 768px) {
+	.AboutUs h1 {
+		padding: 10rem 1rem;
+		padding-bottom: 5.5rem;
+	}
+
+	.AboutUs p {
+		padding: 0 1rem;
+		padding-bottom: 3.5rem;
+	}
+}
+@media (min-width: 1170px) {
+	.AboutUs h1 {
+		padding: 15rem 1rem;
+		padding-bottom: 7.5rem;
+	}
+
+	.AboutUs p {
+		padding: 0 1rem;
+		padding-bottom: 10.5rem;
+	}
+}

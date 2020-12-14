@@ -1,0 +1,19 @@
+.Navbar {
+	position: fixed;
+	top: 0;
+	background: #fff;
+	width: 100%;
+	display: flex;
+	z-index: 2;
+	text-align: center;
+	padding: 10px 5px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.HeaderTitle {
+	font-weight: 500;
+	font-size: 1.5rem;
+	top: 0;
+	left: 0;
+	width: 100%;
+}

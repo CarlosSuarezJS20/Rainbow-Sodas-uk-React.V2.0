@@ -1,0 +1,71 @@
+.SectionCenter {
+	width: 100vw;
+	margin: 0 auto;
+}
+
+.ProductsTitle {
+	padding-top: 2.5rem;
+	margin-left: 1rem;
+	font-size: 5rem;
+	font-weight: 400;
+	line-height: 0.8em;
+}
+
+.ToggleFilter {
+	font-size: 2rem;
+	margin-top: 2rem;
+	background: #fff;
+	text-transform: uppercase;
+	border-style: none;
+	cursor: pointer;
+	margin-left: 1rem;
+	outline: 0;
+	transition: all 0.3s linear;
+}
+
+.MinusSign {
+	margin-left: 0.5rem;
+}
+
+.ToggleFilter:hover {
+	color: hsl(185, 81%, 29%);
+}
+
+.RemoveFilters {
+	margin-top: 0.5rem;
+	margin-left: 4.5rem;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 1.3rem;
+	color: #ccc;
+	transition: all 0.3s linear;
+	display: none;
+}
+
+.ShowRemoveFilters {
+	display: block;
+}
+
+.CategoriesHolder {
+	height: 0px;
+	overflow: hidden;
+	display: grid;
+	transition: all 0.3s linear;
+	grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+	justify-items: center;
+}
+
+.CategoriesShow {
+	height: 200px;
+}
+
+@media (min-width: 768px) {
+	.CategoriesShow {
+		height: 300px;
+	}
+}
+@media (min-width: 1170px) {
+	.CategoriesShow {
+		height: 200px;
+	}
+}

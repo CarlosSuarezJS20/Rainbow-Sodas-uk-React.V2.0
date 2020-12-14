@@ -1,0 +1,14 @@
+.NavToggle {
+	background: transparent;
+	margin: 0 1rem;
+	border: transparent;
+	font-size: 2.5rem;
+	color: rgb(41, 41, 41);
+	cursor: pointer;
+	transition: all 0.3s linear;
+	outline: 0;
+}
+
+.NavToggle:hover {
+	transform: scale(1.2);
+}

@@ -1,0 +1,28 @@
+.CartToggle {
+	background: transparent;
+	margin: 0 1rem;
+	border: transparent;
+	font-size: 2.5rem;
+	color: rgb(41, 41, 41);
+	cursor: pointer;
+	transition: all 0.3s linear;
+	outline: 0;
+}
+
+.CartItemsCounter {
+	color: #fff;
+	font-weight: bold;
+	position: absolute;
+	right: 0.5%;
+	top: 35%;
+	font-size: 1.2rem;
+	background: red;
+	border: 1px solid #fff;
+	padding: 1px 5px;
+	border-radius: 0.5rem;
+	outline: 0;
+}
+
+.CartToggle:hover {
+	transform: scale(1.2);
+}
