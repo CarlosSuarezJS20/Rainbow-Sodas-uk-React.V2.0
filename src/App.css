@@ -1,0 +1,16 @@
+.ListHolder {
+	height: 100%;
+	margin-top: 180px;
+}
+
+@media (min-width: 970px) {
+	.ListHolder {
+		margin-top: -50px;
+	}
+}
+
+@media (min-width: 1300px) {
+	.ListHolder {
+		margin-top: -50px;
+	}
+}
