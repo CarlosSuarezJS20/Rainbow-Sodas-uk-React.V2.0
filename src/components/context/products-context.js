@@ -4,13 +4,15 @@ export const ProductContext = React.createContext({
 	productsList: [],
 	error: null,
 	filtersbtns: [],
-	filterProducts: () => {},
+	fetchFilters: () => {},
+	filters: [],
 });
 
 const ProductsContextProvider = (props) => {
 	const [updatedProductList, setUpdatedProductList] = useState();
 	const [errorText, setError] = useState(null);
-	const [UpdatedfiltersBtns, setFilteresBtns] = useState([]);
+	const [updatedfiltersBtns, setFilteresBtns] = useState([]);
+	const [filters, setFilters] = useState([]);
 
 	useEffect(() => {
 		fetch('https://rainbow-soda-uk-default-rtdb.firebaseio.com/products.json')
@@ -22,10 +24,23 @@ const ProductsContextProvider = (props) => {
 						id: key,
 						productName: responseData[key].productName,
 						productImg: responseData[key].productImgURL,
-						productType: responseData[key].type,
+						productTypes: responseData[key].type,
 					});
 				}
-				setUpdatedProductList(productsData);
+				if (filters.length !== 0) {
+					// removing duplicate
+					const updatedFilters = filters.filter((filter, index) => {
+						return filters.indexOf(filter) === index;
+					});
+					const filteredProducts = productsData.filter((prod) => {
+						return prod.productTypes.some((prodType) =>
+							updatedFilters.includes(prodType)
+						);
+					});
+					setUpdatedProductList(filteredProducts);
+				} else {
+					setUpdatedProductList(productsData);
+				}
 				setFilteresBtns([
 					{
 						name: 'berries',
@@ -61,18 +76,14 @@ const ProductsContextProvider = (props) => {
 			.catch((error) => {
 				setError('Something Went Wrong!  :(');
 			});
-	}, []);
+	}, [filters]);
 
-	const filterProductsHandler = (filtersArray) => {
-		const filters = filtersArray.filter((filter, index) => {
-			return filtersArray.indexOf(filter) === index;
-		});
-
-		const filteredItems = updatedProductList.filter((prod) => {
-			return prod.productType.some((prodType) => filters.includes(prodType));
-		});
-
-		console.log(filteredItems);
+	const filtersHandler = (filterValue) => {
+		if (filters.find((filter) => filter === filterValue)) {
+			setFilters(filters.filter((filter) => filter !== filterValue));
+		} else {
+			setFilters((initialFilter) => [...initialFilter, filterValue]);
+		}
 	};
 
 	return (
@@ -80,8 +91,8 @@ const ProductsContextProvider = (props) => {
 			value={{
 				productsList: updatedProductList,
 				error: errorText,
-				filtersbtns: UpdatedfiltersBtns,
-				filterProducts: filterProductsHandler,
+				filtersbtns: updatedfiltersBtns,
+				fetchFilters: filtersHandler,
 			}}
 		>
 			{props.children}
