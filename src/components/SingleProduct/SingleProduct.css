@@ -1,0 +1,17 @@
+.SingleProduct {
+	margin: 1rem;
+	text-align: center;
+}
+
+.ProductTitle {
+	margin: 1rem 0;
+}
+
+.ProductTitle h2 {
+	font-size: 2.5rem;
+	font-weight: 300;
+}
+
+.ProductImgContainer {
+	position: relative;
+}

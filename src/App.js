@@ -6,6 +6,8 @@ import ShopAllDirectional from './components/ShopAllDirectional/ShopAllDirection
 import AboutUs from './components/AboutUs/AboutUs';
 import FilterSection from './components/FiltersSection/FiltersSection';
 import ProductList from './components/ProductList/ProductList';
+import Footer from './components/Footer/Footer';
+import ProductsContextProvider from './components/context/products-context';
 
 const App = (props) => {
 	return (
@@ -14,8 +16,11 @@ const App = (props) => {
 			<HeroBanner />
 			<ShopAllDirectional />
 			<AboutUs />
-			<FilterSection />
-			<ProductList />
+			<ProductsContextProvider>
+				<FilterSection />
+				<ProductList />
+			</ProductsContextProvider>
+			<Footer />
 		</React.Fragment>
 	);
 };

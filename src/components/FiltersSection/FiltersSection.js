@@ -1,32 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import classes from './FiltersSection.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinusSquare } from '@fortawesome/free-solid-svg-icons';
-
+import { faMinusSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import FilterBtn from '../UI/FilterBtn/FilterBtn';
+import { ProductContext } from '../context/products-context';
 
 const filterSection = () => {
-	const [btnsDescriptions] = useState([
-		{ name: 'berries', elementConfig: { type: 'button', value: 'berries' } },
-		{ name: 'citrusy', elementConfig: { type: 'button', value: 'citrusy' } },
-		{ name: 'classic', elementConfig: { type: 'button', value: 'classic' } },
-		{ name: 'fancy', elementConfig: { type: 'button', value: 'fancy' } },
-		{ name: 'floral', elementConfig: { type: 'button', value: 'floral' } },
-		{ name: 'jazzy', elementConfig: { type: 'button', value: 'jazzy' } },
-		{ name: 'juicy', elementConfig: { type: 'button', value: 'juicy' } },
-		{ name: 'sour', elementConfig: { type: 'button', value: 'sour' } },
-	]);
+	const filtersContext = useContext(ProductContext);
 
-	const mapping = btnsDescriptions.map((btnDescription) => {
+	const [categoriesDrawerStatus, setCategoriesDrawerStatus] = useState(false);
+	const [selectedFilters, setSelectedFilters] = useState([]);
+
+	const displayFilters = () => {
+		if (categoriesDrawerStatus) {
+			setCategoriesDrawerStatus(false);
+		} else {
+			setCategoriesDrawerStatus(true);
+		}
+	};
+
+	// Showing categories filter section with classes
+	let attachedClassesCategorySection = [
+		classes.CategoriesHolder,
+		classes.CategoriesClose,
+	];
+
+	if (categoriesDrawerStatus) {
+		attachedClassesCategorySection = [
+			classes.CategoriesHolder,
+			classes.CategoriesShow,
+		];
+	}
+
+	const filterProductList = (filterName) => {
+		console.log(filterName);
+		setSelectedFilters((prevFilters) => [...prevFilters, filterName]);
+		console.log(selectedFilters);
+		filtersContext.filterProducts(selectedFilters);
+	};
+
+	const mapping = filtersContext.filtersbtns.map((btnDescription) => {
 		return (
 			<FilterBtn
 				key={btnDescription.name}
 				name={btnDescription.name}
 				type={btnDescription.elementConfig.type}
 				value={btnDescription.elementConfig.value}
-				clicked={(event) => {
-					console.log(event.target.value);
-				}}
+				clicked={filterProductList.bind(this, btnDescription.name)}
 			/>
 		);
 	});
@@ -37,15 +57,24 @@ const filterSection = () => {
 				SHOP THE <br />
 				FLAVOURS
 			</h1>
-			<button className={classes.ToggleFilter}>
+			<button className={classes.ToggleFilter} onClick={displayFilters}>
 				filter
 				<span>
-					<FontAwesomeIcon className={classes.MinusSign} icon={faMinusSquare} />
-					{/* Tere will be a conditional to display a different fontAwesome link (FaPlusSquare) and there is a remove filters element too*/}
+					{categoriesDrawerStatus ? (
+						<FontAwesomeIcon
+							className={classes.FilterMinusSign}
+							icon={faMinusSquare}
+						/>
+					) : (
+						<FontAwesomeIcon
+							className={classes.FilterPlusSign}
+							icon={faPlusSquare}
+						/>
+					)}
 				</span>
 			</button>
 			<a className={classes.RemoveFilters}>x remove filters</a>
-			<div className={classes.CategoriesHolder}>{mapping}</div>
+			<div className={attachedClassesCategorySection.join(' ')}>{mapping}</div>
 		</section>
 	);
 };

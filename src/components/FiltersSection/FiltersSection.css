@@ -23,8 +23,11 @@
 	transition: all 0.3s linear;
 }
 
-.MinusSign {
-	margin-left: 0.5rem;
+.FilterPlusSign {
+	margin-left: 1rem;
+}
+.FilterMinusSign {
+	margin-left: 1rem;
 }
 
 .ToggleFilter:hover {
@@ -47,7 +50,6 @@
 }
 
 .CategoriesHolder {
-	height: 0px;
 	overflow: hidden;
 	display: grid;
 	transition: all 0.3s linear;
@@ -55,8 +57,12 @@
 	justify-items: center;
 }
 
+.CategoriesClose {
+	height: 0;
+}
+
 .CategoriesShow {
-	height: 200px;
+	height: 400px;
 }
 
 @media (min-width: 768px) {

@@ -1,0 +1,10 @@
+.MessageHolder {
+	margin-top: 3rem;
+	height: 100px;
+}
+
+.MessageHolder p {
+	color: rgb(255, 151, 151);
+	font-size: 2rem;
+	text-align: center;
+}
