@@ -5,9 +5,10 @@ import { faMinusSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import FilterBtn from '../UI/FilterBtn/FilterBtn';
 import { ProductContext } from '../context/products-context';
 
-const filterSection = () => {
+const filterSection = (props) => {
 	const productContext = useContext(ProductContext);
 	const [categoriesDrawerStatus, setCategoriesDrawerStatus] = useState(false);
+	const [filteringStatus, setFilteringStatus] = useState(false);
 
 	const displayFilters = () => {
 		if (categoriesDrawerStatus) {
@@ -32,6 +33,7 @@ const filterSection = () => {
 
 	const filtersHandler = (filter) => {
 		productContext.fetchFilters(filter);
+		setFilteringStatus(true);
 	};
 
 	const mapping = productContext.filtersbtns.map((btnDescription) => {
@@ -41,12 +43,23 @@ const filterSection = () => {
 				name={btnDescription.name}
 				type={btnDescription.elementConfig.type}
 				value={btnDescription.elementConfig.value}
+				isSelected={btnDescription.selected}
 				clicked={() => {
 					filtersHandler(btnDescription.elementConfig.value);
 				}}
 			/>
 		);
 	});
+
+	// remove Filters a classes conditional:
+	let filterRemoveClass = [classes.RemoveFilters];
+	if (filteringStatus && productContext.filters.length > 0) {
+		filterRemoveClass = [classes.RemoveFilters, classes.ShowRemoveFilters];
+	}
+
+	const removeFiltersHandler = () => {
+		productContext.clearFilters();
+	};
 
 	return (
 		<section className={classes.SectionCenter}>
@@ -70,7 +83,9 @@ const filterSection = () => {
 					)}
 				</span>
 			</button>
-			<a className={classes.RemoveFilters}>x remove filters</a>
+			<a className={filterRemoveClass.join(' ')} onClick={removeFiltersHandler}>
+				x remove filters
+			</a>
 			<div className={attachedClassesCategorySection.join(' ')}>{mapping}</div>
 		</section>
 	);

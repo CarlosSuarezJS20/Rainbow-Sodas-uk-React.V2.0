@@ -1,0 +1,77 @@
+.CartDrawer {
+	position: fixed;
+	width: 300px;
+	max-width: 75%;
+	height: 100%;
+	right: 0;
+	top: 0;
+	z-index: 3;
+	border-left: 2px solid rgb(41, 41, 41);
+	background: #fff;
+	color: rgb(41, 41, 41);
+	padding: 40px 20px;
+	transition: transform 0.3s ease-out;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+	transform: translateX(100%);
+}
+
+.Open {
+	transform: translateX(0);
+}
+
+.CartInner {
+	margin-bottom: 1rem;
+}
+
+.CartDrawerClose {
+	background: transparent;
+	position: absolute;
+	left: 85%;
+	border: transparent;
+	font-size: 1.8rem;
+	color: var(--clr-primary-5);
+	cursor: pointer;
+	transition: var(--transition);
+	outline: 0;
+}
+
+.CartDrawerTitle {
+	text-align: left;
+	font-weight: 300;
+	font-size: 3rem;
+}
+
+.CartDrawerClose:hover {
+	transform: scale(1.2);
+}
+
+.CartItemsList {
+	overflow-y: scroll;
+	height: 150px;
+	margin: auto;
+}
+
+@media (min-width: 500px) {
+	.CartDrawer {
+		width: 500px;
+	}
+	.CartItemsList {
+		overflow-y: scroll;
+		height: 150px;
+		margin: auto;
+	}
+}
+
+@media (min-width: 768px) {
+	.CartDrawer {
+		width: 500px;
+	}
+}
+@media screen and (min-width: 1370px) {
+	.CartDrawer {
+		width: 700px;
+	}
+	.CartItemsList {
+		height: 400px;
+	}
+}

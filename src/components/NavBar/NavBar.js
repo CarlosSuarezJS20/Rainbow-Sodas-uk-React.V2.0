@@ -8,7 +8,7 @@ const navBar = (props) => {
 		<nav className={classes.Navbar}>
 			<NavbarMenuBurger />
 			<h1 className={classes.HeaderTitle}>RAINBOW SODAS UK</h1>
-			<NavbarCartIcon />
+			<NavbarCartIcon clicked={props.drawerShowToTrue} />
 		</nav>
 	);
 };

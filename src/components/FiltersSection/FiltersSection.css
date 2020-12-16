@@ -45,6 +45,12 @@
 	display: none;
 }
 
+.RemoveFilters:hover {
+	color: var(--clr-primary-1);
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 .ShowRemoveFilters {
 	display: block;
 }

@@ -4,14 +4,57 @@ export const ProductContext = React.createContext({
 	productsList: [],
 	error: null,
 	filtersbtns: [],
-	fetchFilters: () => {},
 	filters: [],
+	fetchFilters: () => {},
+	clearFilters: () => {},
+	inCart: () => {},
 });
 
 const ProductsContextProvider = (props) => {
 	const [updatedProductList, setUpdatedProductList] = useState();
 	const [errorText, setError] = useState(null);
-	const [updatedfiltersBtns, setFilteresBtns] = useState([]);
+	const [updatedFiltersBtns, setUpdatedfiltersBtns] = useState([
+		{
+			name: 'berries',
+			elementConfig: { type: 'button', value: 'berries' },
+			selected: false,
+		},
+		{
+			name: 'citrusy',
+			elementConfig: { type: 'button', value: 'citrusy' },
+			selected: false,
+		},
+		{
+			name: 'classic',
+			elementConfig: { type: 'button', value: 'classic' },
+			selected: false,
+		},
+		{
+			name: 'fancy',
+			elementConfig: { type: 'button', value: 'fancy' },
+			selected: false,
+		},
+		{
+			name: 'floral',
+			elementConfig: { type: 'button', value: 'floral' },
+			selected: false,
+		},
+		{
+			name: 'jazzy',
+			elementConfig: { type: 'button', value: 'jazzy' },
+			selected: false,
+		},
+		{
+			name: 'juicy',
+			elementConfig: { type: 'button', value: 'juicy' },
+			selected: false,
+		},
+		{
+			name: 'sour',
+			elementConfig: { type: 'button', value: 'sour' },
+			selected: false,
+		},
+	]);
 	const [filters, setFilters] = useState([]);
 
 	useEffect(() => {
@@ -24,7 +67,10 @@ const ProductsContextProvider = (props) => {
 						id: key,
 						productName: responseData[key].productName,
 						productImg: responseData[key].productImgURL,
+						productPrice: responseData[key].price,
 						productTypes: responseData[key].type,
+						productQty: responseData[key].qty,
+						inCart: responseData[key].inCart,
 					});
 				}
 				if (filters.length !== 0) {
@@ -41,49 +87,56 @@ const ProductsContextProvider = (props) => {
 				} else {
 					setUpdatedProductList(productsData);
 				}
-				setFilteresBtns([
-					{
-						name: 'berries',
-						elementConfig: { type: 'button', value: 'berries' },
-					},
-					{
-						name: 'citrusy',
-						elementConfig: { type: 'button', value: 'citrusy' },
-					},
-					{
-						name: 'classic',
-						elementConfig: { type: 'button', value: 'classic' },
-					},
-					{
-						name: 'fancy',
-						elementConfig: { type: 'button', value: 'fancy' },
-					},
-					{
-						name: 'floral',
-						elementConfig: { type: 'button', value: 'floral' },
-					},
-					{
-						name: 'jazzy',
-						elementConfig: { type: 'button', value: 'jazzy' },
-					},
-					{
-						name: 'juicy',
-						elementConfig: { type: 'button', value: 'juicy' },
-					},
-					{ name: 'sour', elementConfig: { type: 'button', value: 'sour' } },
-				]);
+				// setting up filters btns properties after fetching data from server
 			})
 			.catch((error) => {
 				setError('Something Went Wrong!  :(');
 			});
-	}, [filters]);
+	}, [filters, setUpdatedProductList]);
+
+	// ==== FILTER ACTIONS ====
+	// ==== ============== ====
 
 	const filtersHandler = (filterValue) => {
 		if (filters.find((filter) => filter === filterValue)) {
 			setFilters(filters.filter((filter) => filter !== filterValue));
+			selectBtnToFalse(filterValue);
 		} else {
 			setFilters((initialFilter) => [...initialFilter, filterValue]);
+			selectBtnToTrue(filterValue);
 		}
+	};
+
+	const selectBtnToTrue = (name) => {
+		const btnsCopy = [...updatedFiltersBtns];
+		const btnSelectedIndex = btnsCopy.findIndex((btn) => btn.name === name);
+		btnsCopy[btnSelectedIndex].selected = true;
+		setUpdatedfiltersBtns(btnsCopy);
+	};
+
+	const selectBtnToFalse = (name) => {
+		const btnsCopy = [...updatedFiltersBtns];
+		const btnSelectedIndex = btnsCopy.findIndex((btn) => btn.name === name);
+		btnsCopy[btnSelectedIndex].selected = false;
+		setUpdatedfiltersBtns(btnsCopy);
+	};
+
+	const clearFiltersHandler = () => {
+		const btnsCopy = [...updatedFiltersBtns];
+		btnsCopy.forEach((btn) => (btn.selected = false));
+		setUpdatedfiltersBtns(btnsCopy);
+		const filtersCopy = [];
+		setFilters(filtersCopy);
+	};
+
+	// ===== CART ===========
+	// ==== ============== ====
+
+	const inCartToTrue = (id) => {
+		const copyProducts = [...updatedProductList];
+		const productIndex = copyProducts.findIndex((prod) => prod.id === id);
+		copyProducts[productIndex].inCart = true;
+		setUpdatedProductList(copyProducts);
 	};
 
 	return (
@@ -91,8 +144,11 @@ const ProductsContextProvider = (props) => {
 			value={{
 				productsList: updatedProductList,
 				error: errorText,
-				filtersbtns: updatedfiltersBtns,
+				filters: filters,
+				filtersbtns: updatedFiltersBtns,
 				fetchFilters: filtersHandler,
+				clearFilters: clearFiltersHandler,
+				inCartHandler: inCartToTrue,
 			}}
 		>
 			{props.children}
