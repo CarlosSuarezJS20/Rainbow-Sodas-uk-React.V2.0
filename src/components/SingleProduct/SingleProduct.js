@@ -1,13 +1,23 @@
 import React, { useContext } from 'react';
 import classes from './SingleProduct.css';
 import AddToCartBtn from './AddToCartBtn/AddtoCartBtn';
-import { ProductContext } from '../context/products-context';
+import { CartContext } from '../context/cart-context';
 
 const singleProduct = (props) => {
-	const productsContext = useContext(ProductContext);
+	const cartContext = useContext(CartContext);
 
-	const addToCart = (id) => {
-		productsContext.inCartHandler(id);
+	const addToCart = (id, productName, price, qty) => {
+		if (cartContext.cart.find((prod) => prod.productId === id)) {
+			cartContext.updateMoreQty(id);
+		} else {
+			const productInCart = {
+				productId: id,
+				productName: productName,
+				productPrice: price,
+				productQty: qty,
+			};
+			cartContext.updateCart(productInCart);
+		}
 	};
 
 	return (
@@ -20,7 +30,12 @@ const singleProduct = (props) => {
 			</div>
 			<AddToCartBtn
 				clicked={() => {
-					addToCart(props.productId);
+					addToCart(
+						props.productId,
+						props.productName,
+						props.productPrice,
+						props.productQty
+					);
 				}}
 			/>
 		</article>

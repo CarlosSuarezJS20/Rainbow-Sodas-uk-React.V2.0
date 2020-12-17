@@ -6,9 +6,8 @@ import ShopAllDirectional from '../ShopAllDirectional/ShopAllDirectional';
 import AboutUs from '../AboutUs/AboutUs';
 import CartSideDrawer from '../CartSideDrawer/CartSideDrawer';
 import Footer from '../Footer/Footer';
-
 // import context to access in cartDrawer
-import ProductContextProvider from '../context/products-context';
+import CartContextProvider from '../context/cart-context';
 
 const layout = (props) => {
 	const [showDrawer, setShowDrawer] = useState(false);
@@ -23,17 +22,17 @@ const layout = (props) => {
 
 	return (
 		<React.Fragment>
-			<ProductContextProvider>
+			<CartContextProvider>
 				<Navbar drawerShowToTrue={showDrawerToTrueHandler} />
 				<CartSideDrawer
 					open={showDrawer}
 					drawerShowToFalse={showDrawerToFalseHandler}
 				/>
-			</ProductContextProvider>
-			<Herobanner />
-			<ShopAllDirectional />
-			<AboutUs />
-			{props.children}
+				<Herobanner />
+				<ShopAllDirectional />
+				<AboutUs />
+				{props.children}
+			</CartContextProvider>
 			<Footer />
 		</React.Fragment>
 	);

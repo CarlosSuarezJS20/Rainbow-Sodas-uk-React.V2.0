@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './AddToCartBtn.css';
 
 const addToCartBtn = (props) => {
+	const [btnText, setBtnText] = useState('Add to Cart');
+
+	const changeText = () => {
+		setBtnText('added!!');
+		setTimeout(() => {
+			setBtnText('add to cart');
+		}, 1000);
+	};
+
+	const onClicked = () => {
+		props.clicked();
+		changeText();
+	};
+
 	return (
 		<div className={classes.CartBtnHolder}>
-			<button className={classes.AddToCartBtn} onClick={props.clicked}>
-				add to cart
+			<button className={classes.AddToCartBtn} onClick={onClicked}>
+				{btnText}
 			</button>
 		</div>
 	);

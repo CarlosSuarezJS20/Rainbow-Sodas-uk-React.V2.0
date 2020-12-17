@@ -13,13 +13,13 @@ span {
 
 .CartItem span {
 	background: black;
-	color: var(--clr-white);
+	color: #fff;
 	padding: 5px;
 	border-radius: 35%;
 }
 
 .SideCartProductItem,
-.sideCartProductPrice {
+.SideCartProductPrice {
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
@@ -29,26 +29,30 @@ span {
 	background: transparent;
 	border: transparent;
 	font-size: 2rem;
-	color: var(--clr-primary-5);
+	color: hsl(185, 81%, 29%);
 	cursor: pointer;
-	transition: var(--transition);
+	transition: all 0.3s linear;
 	outline: 0;
 }
 
 .TrashIcon:hover {
 	background: transparent;
-	color: var(--clr-primary-3);
+	color: hsl(185, 81%, 29%);
 	font-size: 2.5rem;
-	transition: var(--transition);
+	transition: all 0.3s linear;
+}
+
+.Qty {
+	color: ;
 }
 
 .QtyBtn {
 	background: transparent;
 	border: transparent;
 	font-size: 2.5rem;
-	color: var(--clr-primary-1);
+	color: rgb(41, 41, 41);
 	cursor: pointer;
-	transition: var(--transition);
+	transition: all 0.3s linear;
 	outline: 0;
 }
 

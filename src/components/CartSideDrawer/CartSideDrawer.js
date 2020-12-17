@@ -1,12 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import classes from './CartSideDrawer.css';
 import CartSideDrawerFooter from './CartSideDrawerFooter/CartSideDrawerFooter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
-import { ProductContext } from '../context/products-context';
+import SingleItemCartDrawer from '../CartSideDrawer/SingleItemCartDrawer/SingleItemCartDrawer';
+
+import { CartContext } from '../context/cart-context';
 
 const cartSideDrawer = (props) => {
-	const productsContext = useContext(ProductContext);
+	const cartContext = useContext(CartContext);
 
 	let drawerAttachedClasses = [classes.CartDrawer];
 
@@ -26,8 +28,28 @@ const cartSideDrawer = (props) => {
 				</button>
 				<div className={classes.CartDrawerTitle}>CART</div>
 			</div>
-			<section className={classes.CartItemsList}>{'nothing'}</section>
-			<CartSideDrawerFooter />
+			<section className={classes.CartItemsList}>
+				{cartContext.cart.length === 0 ? (
+					<p>Cart is Empty</p>
+				) : (
+					cartContext.cart.map((prod) => (
+						<SingleItemCartDrawer
+							key={prod.productId}
+							productId={prod.productId}
+							productName={prod.productName}
+							productPrice={prod.productPrice}
+							qty={prod.productQty}
+						/>
+					))
+				)}
+			</section>
+			{cartContext.cart.length > 0 && (
+				<CartSideDrawerFooter
+					total={cartContext.cart
+						.map((prod) => prod.productPrice * prod.productQty)
+						.reduce((p, c) => p + c)}
+				/>
+			)}
 		</div>
 	);
 };

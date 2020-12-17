@@ -7,7 +7,6 @@ export const ProductContext = React.createContext({
 	filters: [],
 	fetchFilters: () => {},
 	clearFilters: () => {},
-	inCart: () => {},
 });
 
 const ProductsContextProvider = (props) => {
@@ -56,12 +55,12 @@ const ProductsContextProvider = (props) => {
 		},
 	]);
 	const [filters, setFilters] = useState([]);
-
 	useEffect(() => {
 		fetch('https://rainbow-soda-uk-default-rtdb.firebaseio.com/products.json')
 			.then((response) => response.json())
 			.then((responseData) => {
 				const productsData = [];
+
 				for (const key in responseData) {
 					productsData.push({
 						id: key,
@@ -70,7 +69,6 @@ const ProductsContextProvider = (props) => {
 						productPrice: responseData[key].price,
 						productTypes: responseData[key].type,
 						productQty: responseData[key].qty,
-						inCart: responseData[key].inCart,
 					});
 				}
 				if (filters.length !== 0) {
@@ -129,16 +127,6 @@ const ProductsContextProvider = (props) => {
 		setFilters(filtersCopy);
 	};
 
-	// ===== CART ===========
-	// ==== ============== ====
-
-	const inCartToTrue = (id) => {
-		const copyProducts = [...updatedProductList];
-		const productIndex = copyProducts.findIndex((prod) => prod.id === id);
-		copyProducts[productIndex].inCart = true;
-		setUpdatedProductList(copyProducts);
-	};
-
 	return (
 		<ProductContext.Provider
 			value={{
@@ -148,7 +136,6 @@ const ProductsContextProvider = (props) => {
 				filtersbtns: updatedFiltersBtns,
 				fetchFilters: filtersHandler,
 				clearFilters: clearFiltersHandler,
-				inCartHandler: inCartToTrue,
 			}}
 		>
 			{props.children}
