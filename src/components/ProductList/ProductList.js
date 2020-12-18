@@ -23,7 +23,7 @@ const productList = (props) => {
 	}
 
 	return (
-		<section className={classes.ProductsHolder}>
+		<section className={classes.ProductsHolder} id="products">
 			{productsContext.error ? (
 				<ErrorMessage errorMessage={productsContext.error} />
 			) : (

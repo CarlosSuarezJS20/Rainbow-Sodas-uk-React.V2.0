@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const shopAllDirectional = (props) => (
-	<div className={classes.Collections}>
+	<div className={classes.Collections} id="shopAll">
 		<a href={'#products-filter'}>
 			shop all
 			<span>

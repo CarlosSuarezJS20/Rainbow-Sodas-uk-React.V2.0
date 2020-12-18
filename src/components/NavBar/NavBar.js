@@ -6,7 +6,7 @@ import NavbarCartIcon from './NavbarCartIcon/NavbarCartIcon';
 const navBar = (props) => {
 	return (
 		<nav className={classes.Navbar}>
-			<NavbarMenuBurger />
+			<NavbarMenuBurger clicked={props.menuDrawerShowToTrue} />
 			<h1 className={classes.HeaderTitle}>RAINBOW SODAS UK</h1>
 			<NavbarCartIcon clicked={props.drawerShowToTrue} />
 		</nav>

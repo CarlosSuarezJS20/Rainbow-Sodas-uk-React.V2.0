@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './Footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-scroll';
+
 import {
 	faFacebook,
 	faTwitter,
@@ -11,26 +13,45 @@ const footer = (props) => (
 	<footer className={classes.Footer}>
 		<ul className={classes.FooterLinks}>
 			<li>
-				<a href="" className={classes.FooterLink}>
+				<Link
+					to="main"
+					smooth={true}
+					spy={true}
+					duration={0}
+					className={classes.FooterLink}
+				>
 					home
-				</a>
+				</Link>
 			</li>
 			<li>
-				<a href="" className={classes.FooterLink}>
+				<Link
+					to="about"
+					smooth={true}
+					spy={true}
+					duration={0}
+					className={classes.FooterLink}
+				>
 					about
-				</a>
+				</Link>
 			</li>
 			<li>
-				<a href="#products-filter" className={classes.FooterLink}>
+				<Link
+					to="products"
+					smooth={true}
+					spy={true}
+					duration={0}
+					offset={-250}
+					className={classes.FooterLink}
+				>
 					products
-				</a>
+				</Link>
 			</li>
 		</ul>
 		<ul className={classes.FooterIcons}>
 			<li>
 				<a
 					href="https://www.facebook.com/"
-					target="_blank"
+					// target="_blank"
 					className={classes.FooterIcon}
 				>
 					<FontAwesomeIcon icon={faFacebook} />
@@ -39,7 +60,7 @@ const footer = (props) => (
 			<li>
 				<a
 					href="https://www.twitter.com"
-					target="_blank"
+					// target="_blank"
 					className={classes.FooterIcon}
 				>
 					<FontAwesomeIcon icon={faTwitter} />
@@ -48,7 +69,7 @@ const footer = (props) => (
 			<li>
 				<a
 					href="https://instagram.com"
-					target="_blank"
+					// target="_blank"
 					className={classes.FooterIcon}
 				>
 					<FontAwesomeIcon icon={faInstagram} />
@@ -56,8 +77,7 @@ const footer = (props) => (
 			</li>
 		</ul>
 		<p className={classes.Copyright}>
-			copyright &copy; carlos suarez <span></span>. all rights reserved
-			{/* need to add the date here */}
+			copyright &copy; carlos suarez. all rights reserved
 		</p>
 	</footer>
 );

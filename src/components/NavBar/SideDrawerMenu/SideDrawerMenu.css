@@ -1,0 +1,82 @@
+.SideMenu {
+	position: fixed;
+	width: 300px;
+	max-width: 70%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	z-index: 3;
+	background: rgb(41, 41, 41);
+	color: #fff;
+	padding: 40px 20px;
+	transition: transform 0.3s ease-out;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+	transform: translateX(-100%);
+}
+
+.Open {
+	transform: translateX(0);
+}
+
+.DrawerMenuClose {
+	background: transparent;
+	position: absolute;
+	left: 80%;
+	color: #fff;
+	border: transparent;
+	font-size: 1.8rem;
+	cursor: pointer;
+	transition: all 0.3s linear;
+	outline: 0;
+}
+
+.DrawerMenuClose:hover {
+	transform: scale(1.2);
+}
+
+.DrawerTitle {
+	text-align: center;
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+.NavLinks {
+	margin-top: 5rem;
+}
+
+.NavLink {
+	font-size: 3rem;
+	text-transform: capitalize;
+	color: #fff;
+}
+
+.NavLink:hover {
+	padding-left: 2.25rem;
+	transition: all 0.3s linear;
+}
+
+@media (min-width: 768px) {
+	.SideMenu {
+		width: 400px;
+	}
+
+	.NavLink {
+		margin-left: 4rem;
+	}
+
+	.DrawerMenuClose {
+		left: 80%;
+	}
+}
+@media (min-width: 1170px) {
+	.SideMenu {
+		width: 700px;
+	}
+
+	.NavLink {
+		font-size: 5rem;
+	}
+	.DrawerMenuClose {
+		left: 90%;
+	}
+}

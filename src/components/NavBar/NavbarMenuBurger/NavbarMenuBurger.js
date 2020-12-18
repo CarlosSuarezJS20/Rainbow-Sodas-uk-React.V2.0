@@ -4,7 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const navbarItemBurgerMenu = (props) => {
-	return <FontAwesomeIcon icon={faBars} className={classes.NavToggle} />;
+	return (
+		<FontAwesomeIcon
+			icon={faBars}
+			className={classes.NavToggle}
+			onClick={props.clicked}
+		/>
+	);
 };
 
 export default navbarItemBurgerMenu;

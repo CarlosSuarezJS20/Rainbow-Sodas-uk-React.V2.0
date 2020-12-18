@@ -12,8 +12,14 @@
 
 .HeaderTitle {
 	font-weight: 500;
-	font-size: 2.5rem;
+	font-size: 1.5rem;
 	top: 0;
 	left: 0;
 	width: 100%;
+}
+
+@media (min-width: 768px) {
+	.HeaderTitle {
+		font-size: 2.5rem;
+	}
 }

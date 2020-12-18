@@ -6,26 +6,43 @@ import ShopAllDirectional from '../ShopAllDirectional/ShopAllDirectional';
 import AboutUs from '../AboutUs/AboutUs';
 import CartSideDrawer from '../CartSideDrawer/CartSideDrawer';
 import Footer from '../Footer/Footer';
+import SideDrawerMenu from '../NavBar/SideDrawerMenu/SideDrawerMenu';
 // import context to access in cartDrawer
 import CartContextProvider from '../context/cart-context';
 
 const layout = (props) => {
-	const [showDrawer, setShowDrawer] = useState(false);
+	const [showCartDrawer, setShowCartDrawer] = useState(false);
+	const [showSideMenu, setShowSideMenu] = useState(false);
 
 	const showDrawerToTrueHandler = () => {
-		setShowDrawer(true);
+		setShowCartDrawer(true);
 	};
 
 	const showDrawerToFalseHandler = () => {
-		setShowDrawer(false);
+		setShowCartDrawer(false);
+	};
+
+	const showSideMenuToTrueHandler = () => {
+		setShowSideMenu(true);
+	};
+
+	const showSideMenuToFalseHandler = () => {
+		setShowSideMenu(false);
 	};
 
 	return (
 		<React.Fragment>
 			<CartContextProvider>
-				<Navbar drawerShowToTrue={showDrawerToTrueHandler} />
+				<Navbar
+					drawerShowToTrue={showDrawerToTrueHandler}
+					menuDrawerShowToTrue={showSideMenuToTrueHandler}
+				/>
+				<SideDrawerMenu
+					open={showSideMenu}
+					drawerShowToFalse={showSideMenuToFalseHandler}
+				/>
 				<CartSideDrawer
-					open={showDrawer}
+					open={showCartDrawer}
 					drawerShowToFalse={showDrawerToFalseHandler}
 				/>
 				<Herobanner />

@@ -5,7 +5,7 @@ const addToCartBtn = (props) => {
 	const [btnText, setBtnText] = useState('Add to Cart');
 
 	const changeText = () => {
-		setBtnText('added!!');
+		setBtnText('Cheers!!');
 		setTimeout(() => {
 			setBtnText('add to cart');
 		}, 1000);

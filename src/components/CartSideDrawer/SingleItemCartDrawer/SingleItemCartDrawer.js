@@ -33,7 +33,7 @@ const singleItemCartDrawer = (props) => {
 				</button>
 			</div>
 			<div className={classes.SideCartProductPrice}>
-				<p>{props.productPrice}</p>
+				<p> £ {props.productPrice}</p>
 				<div>
 					<button
 						className={classes.QtyBtn}

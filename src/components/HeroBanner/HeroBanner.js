@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './HeroBanner.css';
 
 const heroBanner = (props) => (
-	<div className={classes.MainBanner}>
+	<div className={classes.MainBanner} id="main">
 		<div>
 			<h1 className={classes.BannerText}>
 				Welcome to <br />

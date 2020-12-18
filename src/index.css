@@ -4,7 +4,6 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	scroll-behavior: smooth;
 }
 
 body,
@@ -14,10 +13,12 @@ html {
 	color: rgb(41, 41, 41);
 	line-height: 1.5;
 	font-size: 0.875rem;
-	width: 100%;
-	height: 100%;
+	/* width: 100%;
+	height: 100%; */
 	overflow-x: hidden;
+	scroll-behavior: smooth;
 }
+
 ul {
 	list-style-type: none;
 }

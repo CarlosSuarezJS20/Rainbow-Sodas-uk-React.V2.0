@@ -3,7 +3,7 @@ import classes from './AboutUs.css';
 
 const aboutUs = (props) => (
 	<section className={classes.SectionCenter}>
-		<div className={classes.AboutUs}>
+		<div className={classes.AboutUs} id="about">
 			<h1>
 				WE THE PEOPLE BEHIND CRAFTED <br />
 				SODAS IN <br />
