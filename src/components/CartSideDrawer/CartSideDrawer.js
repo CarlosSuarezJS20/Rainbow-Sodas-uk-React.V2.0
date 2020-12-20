@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import SingleItemCartDrawer from '../CartSideDrawer/SingleItemCartDrawer/SingleItemCartDrawer';
 
+// cart align price
+
 import { CartContext } from '../context/cart-context';
 
 const cartSideDrawer = (props) => {
