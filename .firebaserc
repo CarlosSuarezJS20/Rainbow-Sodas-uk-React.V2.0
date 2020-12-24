@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "budget-world-reactjs"
+    "rainbow-soda-uk": "rainbow-soda-uk",
+    "default": "rainbow-soda-uk"
   }
 }
