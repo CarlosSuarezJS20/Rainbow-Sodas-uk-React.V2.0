@@ -15,7 +15,6 @@ const navbarItemSideCart = (props) => {
 	let itemCounterClass = [classes.CartItemsCounter];
 
 	if (qty > 0) {
-		console.log(qty > 1);
 		itemCounterClass = [classes.CartItemsCounter, classes.Active];
 	}
 

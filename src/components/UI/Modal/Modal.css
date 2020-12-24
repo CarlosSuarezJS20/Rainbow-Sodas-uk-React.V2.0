@@ -1,0 +1,66 @@
+.Modal {
+	position: fixed;
+	z-index: 500;
+	background-color: white;
+	width: 100%;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 1px 1px 1px black;
+	padding: 16px;
+	left: 0%;
+	top: 30%;
+	box-sizing: border-box;
+	transition: all 0.3s ease-out;
+	display: none;
+}
+
+.Show {
+	display: block;
+}
+
+.Summary {
+	padding: 3rem 6rem;
+}
+
+.Summary li {
+	font-size: 1.5rem;
+}
+
+.Summary h3 {
+	font-size: 1.5rem;
+	margin-left: 3rem;
+	margin-bottom: 1rem;
+}
+
+.Summary span {
+	font-size: 1.5rem;
+}
+
+.Summary button {
+	padding: 0.5rem 1rem;
+	margin-top: 1rem;
+	margin-left: 10rem;
+	background: black;
+	color: white;
+	border-radius: 5px;
+}
+
+.Summary p {
+	margin-top: 4rem;
+	font-size: 1rem;
+}
+
+@media (min-width: 600px) {
+	.Modal {
+		width: 500px;
+		left: calc(50% - 250px);
+	}
+
+	.Summary h3 {
+		margin-left: 10rem;
+	}
+
+	.Summary button {
+		margin-left: 15rem;
+	}
+}

@@ -50,6 +50,7 @@ const cartSideDrawer = (props) => {
 					total={cartContext.cart
 						.map((prod) => prod.productPrice * prod.productQty)
 						.reduce((p, c) => p + c)}
+					clicked={cartContext.showCheckOutCard}
 				/>
 			)}
 		</div>

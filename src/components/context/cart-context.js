@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 
 export const CartContext = React.createContext({
 	cart: [],
+	showCheckOut: false,
 	updateCart: () => {},
 	updateMoreQty: () => {},
 	updateLessQty: () => {},
 	deleteProduct: () => {},
+	showCheckOutCard: () => {},
+	hideCheckOutCard: () => {},
 });
 
 const CartContextProvider = (props) => {
 	const [updatedCart, setUpdatedCart] = useState([]);
+	const [updateShowTotal, setUpdateShowTotal] = useState(false);
 
 	const updateCartHandler = (prod) => {
 		setUpdatedCart((curr) => [...curr, prod]);
@@ -42,14 +46,24 @@ const CartContextProvider = (props) => {
 		setUpdatedCart(copyCartProducts);
 	};
 
+	const updateShowTotalToTrue = () => {
+		setUpdateShowTotal(true);
+	};
+
+	const updateShowTotalToFalse = () => {
+		setUpdateShowTotal(false);
+	};
 	return (
 		<CartContext.Provider
 			value={{
 				cart: updatedCart,
+				showCheckOut: updateShowTotal,
 				updateCart: updateCartHandler,
 				updateMoreQty: updateQuantity,
 				updateLessQty: updateLessQuantity,
 				deleteProduct: deleteProductHandle,
+				showCheckOutCard: updateShowTotalToTrue,
+				hideCheckOutCard: updateShowTotalToFalse,
 			}}
 		>
 			{props.children}
