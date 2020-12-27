@@ -30,7 +30,6 @@ Following up my ecommerce UK Rainbow sodas project. I migrated this website to r
 - React.js
 - React-router
 - react-scroll
-- react
 - CSS Modules
 - Fontawesome
 - Firebase (hosting server)
