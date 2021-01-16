@@ -76,6 +76,7 @@ const ProductsContextProvider = (props) => {
 					const updatedFilters = filters.filter((filter, index) => {
 						return filters.indexOf(filter) === index;
 					});
+					// filters propucts 
 					const filteredProducts = productsData.filter((prod) => {
 						return prod.productTypes.some((prodType) =>
 							updatedFilters.includes(prodType)
