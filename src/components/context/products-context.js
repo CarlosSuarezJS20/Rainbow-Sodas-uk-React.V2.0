@@ -54,6 +54,7 @@ const ProductsContextProvider = (props) => {
 			selected: false,
 		},
 	]);
+
 	const [filters, setFilters] = useState([]);
 	useEffect(() => {
 		fetch('https://rainbow-soda-uk-default-rtdb.firebaseio.com/products.json')
@@ -76,7 +77,7 @@ const ProductsContextProvider = (props) => {
 					const updatedFilters = filters.filter((filter, index) => {
 						return filters.indexOf(filter) === index;
 					});
-					// filters propucts 
+					// filters propucts
 					const filteredProducts = productsData.filter((prod) => {
 						return prod.productTypes.some((prodType) =>
 							updatedFilters.includes(prodType)
