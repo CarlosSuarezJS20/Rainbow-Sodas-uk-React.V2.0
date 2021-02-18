@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import Navbar from '../NavBar/NavBar';
 import Herobanner from '../HeroBanner/HeroBanner';
@@ -14,36 +14,28 @@ const layout = (props) => {
 	const [showCartDrawer, setShowCartDrawer] = useState(false);
 	const [showSideMenu, setShowSideMenu] = useState(false);
 
-	const showDrawerToTrueHandler = () => {
-		setShowCartDrawer(true);
-	};
+	const cartDrawerToggleHandler = useCallback(() => {
+		setShowCartDrawer((prevState) => !prevState);
+	}, []);
 
-	const showDrawerToFalseHandler = () => {
-		setShowCartDrawer(false);
-	};
-
-	const showSideMenuToTrueHandler = () => {
-		setShowSideMenu(true);
-	};
-
-	const showSideMenuToFalseHandler = () => {
-		setShowSideMenu(false);
-	};
+	const sideMenuTogglerHandler = useCallback(() => {
+		setShowSideMenu((prevState) => !prevState);
+	}, []);
 
 	return (
 		<React.Fragment>
 			<CartContextProvider>
 				<Navbar
-					drawerShowToTrue={showDrawerToTrueHandler}
-					menuDrawerShowToTrue={showSideMenuToTrueHandler}
+					drawerShowToTrue={cartDrawerToggleHandler}
+					menuDrawerShowToTrue={sideMenuTogglerHandler}
 				/>
 				<SideDrawerMenu
 					open={showSideMenu}
-					drawerShowToFalse={showSideMenuToFalseHandler}
+					drawerShowToFalse={sideMenuTogglerHandler}
 				/>
 				<CartSideDrawer
-					open={showCartDrawer}
-					drawerShowToFalse={showDrawerToFalseHandler}
+					openSideCart={showCartDrawer}
+					drawerShowToFalse={cartDrawerToggleHandler}
 				/>
 				<Herobanner />
 				<ShopAllDirectional />

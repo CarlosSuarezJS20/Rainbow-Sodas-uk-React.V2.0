@@ -4,7 +4,7 @@ import SingleProduct from '../SingleProduct/SingleProduct';
 import ErrorMessage from '../UI/ErrorMessage/ErrorMessage';
 import { ProductContext } from '../context/products-context';
 
-const productList = (props) => {
+const productList = () => {
 	const productsContext = useContext(ProductContext);
 
 	let list = null;

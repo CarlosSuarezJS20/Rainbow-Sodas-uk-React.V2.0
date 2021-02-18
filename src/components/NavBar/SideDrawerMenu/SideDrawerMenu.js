@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './SideDrawerMenu.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-scroll';
 
-const sideDrawerMenu = (props) => {
+const sideDrawerMenu = ({ drawerShowToFalse, open }) => {
 	let drawerAttachedClasses = [classes.SideMenu];
 
-	if (props.open) {
+	useEffect(() => {
+		console.log('sideDrawerMenu mouted');
+	});
+
+	if (open) {
 		drawerAttachedClasses = [classes.SideMenu, classes.Open];
 	}
 
@@ -16,7 +20,7 @@ const sideDrawerMenu = (props) => {
 			<button
 				type="button"
 				className={classes.DrawerMenuClose}
-				onClick={props.drawerShowToFalse}
+				onClick={drawerShowToFalse}
 			>
 				<FontAwesomeIcon icon={faWindowClose} />
 			</button>
@@ -62,4 +66,4 @@ const sideDrawerMenu = (props) => {
 	);
 };
 
-export default sideDrawerMenu;
+export default React.memo(sideDrawerMenu);

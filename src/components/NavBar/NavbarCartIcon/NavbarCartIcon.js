@@ -30,4 +30,4 @@ const navbarItemSideCart = (props) => {
 	);
 };
 
-export default navbarItemSideCart;
+export default React.memo(navbarItemSideCart);

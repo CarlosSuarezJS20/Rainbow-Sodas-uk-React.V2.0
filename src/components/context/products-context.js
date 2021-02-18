@@ -54,8 +54,8 @@ const ProductsContextProvider = (props) => {
 			selected: false,
 		},
 	]);
-
 	const [filters, setFilters] = useState([]);
+
 	useEffect(() => {
 		fetch('https://rainbow-soda-uk-default-rtdb.firebaseio.com/products.json')
 			.then((response) => response.json())
@@ -92,7 +92,7 @@ const ProductsContextProvider = (props) => {
 			.catch((error) => {
 				setError('Something Went Wrong!  :(');
 			});
-	}, [filters, setUpdatedProductList]);
+	}, [filters]);
 
 	// ==== FILTER ACTIONS ====
 	// ==== ============== ====

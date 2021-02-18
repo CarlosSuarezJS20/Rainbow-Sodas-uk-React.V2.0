@@ -5,7 +5,7 @@ import { faMinusSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import FilterBtn from '../UI/FilterBtn/FilterBtn';
 import { ProductContext } from '../context/products-context';
 
-const filterSection = (props) => {
+const filterSection = () => {
 	const productContext = useContext(ProductContext);
 	const [categoriesDrawerStatus, setCategoriesDrawerStatus] = useState(false);
 	const [filteringStatus, setFilteringStatus] = useState(false);

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import classes from './CartSideDrawer.css';
 import CartSideDrawerFooter from './CartSideDrawerFooter/CartSideDrawerFooter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,12 +9,16 @@ import SingleItemCartDrawer from '../CartSideDrawer/SingleItemCartDrawer/SingleI
 
 import { CartContext } from '../context/cart-context';
 
-const cartSideDrawer = (props) => {
+const cartSideDrawer = ({ openSideCart, drawerShowToFalse }) => {
 	const cartContext = useContext(CartContext);
+
+	useEffect(() => {
+		console.log(' CartSideDrawer mounted');
+	});
 
 	let drawerAttachedClasses = [classes.CartDrawer];
 
-	if (props.open) {
+	if (openSideCart) {
 		drawerAttachedClasses = [classes.CartDrawer, classes.Open];
 	}
 
@@ -24,7 +28,7 @@ const cartSideDrawer = (props) => {
 				<button
 					type={'button'}
 					className={classes.CartDrawerClose}
-					onClick={props.drawerShowToFalse}
+					onClick={drawerShowToFalse}
 				>
 					<FontAwesomeIcon icon={faWindowClose} />
 				</button>
